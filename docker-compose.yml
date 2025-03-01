@@ -3,7 +3,7 @@ services:
   employee_management:
     build: .
     ports:
-      - "8002:8000"
+      - "8000:8002"
     volumes:
       - .:/app
     depends_on:
