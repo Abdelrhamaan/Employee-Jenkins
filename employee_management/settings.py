@@ -79,7 +79,7 @@ WSGI_APPLICATION = "employee_management.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "employee_management_db",
+        "NAME": "employee_db",
         "USER": "admin",
         "PASSWORD": "admin",
         "HOST": "employee_db",  # Use the service name defined in docker-compose.yml
