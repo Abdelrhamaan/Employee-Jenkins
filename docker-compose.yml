@@ -12,7 +12,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - /usr/bin/docker:/usr/bin/docker
       - /usr/local/bin/docker-compose:/usr/local/bin/docker-compose  # Add this line
-
+      - /home/ec2-user/Employee-Jenkins:/project  
     environment:
       - JAVA_OPTS=-Djenkins.install.runSetupWizard=true
     restart: unless-stopped
