@@ -10,23 +10,24 @@ services:
     volumes:
       - /mnt/jenkins_home:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
-      - /home/ec2-user/Employee-Jenkins:/project  
+      - /home/ec2-user/Employee-Jenkins:/project
     environment:
       - JAVA_OPTS=-Djenkins.install.runSetupWizard=true
     restart: unless-stopped
 
   employee_management:
     build: 
-      context: /home/ec2-user/Employee-Jenkins  # Full path to match volume
+      context: /home/ec2-user/Employee-Jenkins
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
     volumes:
-      - /home/ec2-user/Employee-Jenkins:/app  # Match Jenkins volume
-    depends_on:
-      - employee_db
+      - /home/ec2-user/Employee-Jenkins:/app
     environment:
       - DJANGO_SETTINGS_MODULE=employee.settings
+      - PYTHONPATH=/app
+    depends_on:
+      - employee_db
 
   employee_db:
     image: postgres:latest
