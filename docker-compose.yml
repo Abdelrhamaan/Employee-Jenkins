@@ -22,8 +22,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
-    volumes:
-      - . :/app
     environment:
       - DJANGO_SETTINGS_MODULE=employee_management.settings
       - PYTHONPATH=/app
