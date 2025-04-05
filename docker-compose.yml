@@ -18,12 +18,12 @@ services:
   employee_management:
     container_name: employee_management
     build:
-      context: /home/ec2-user/Employee-Jenkins
+      context: .
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
     volumes:
-      - /home/ec2-user/Employee-Jenkins:/app
+      - . :/app
     environment:
       - DJANGO_SETTINGS_MODULE=employee_management.settings
       - PYTHONPATH=/app
