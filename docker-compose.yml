@@ -22,12 +22,15 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
+    volumes:
+      - .:/app
     environment:
       - DJANGO_SETTINGS_MODULE=employee_management.settings
       - PYTHONPATH=/app
     depends_on:
       employee_db:
         condition: service_healthy
+    
 
   employee_db:
     container_name: employee_db
@@ -40,8 +43,8 @@ services:
       - pg_data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U admin -d employee_db"]
-      interval: 60s
-      timeout: 60s
+      interval: 5s
+      timeout: 5s
       retries: 5
 
 volumes:
