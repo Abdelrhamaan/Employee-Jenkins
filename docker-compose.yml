@@ -28,6 +28,8 @@ services:
     depends_on:
       employee_db:
         condition: service_healthy
+    volumes:
+    - ./employee_management:/app
 
   employee_db:
     container_name: employee_db
