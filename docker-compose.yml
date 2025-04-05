@@ -10,12 +10,13 @@ services:
     volumes:
       - /mnt/jenkins_home:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
-      - /home/ec2-user/Employee-Jenkins:/project
+      - /home/ec2-user/Employee-Jenkins:/app
     environment:
       - JAVA_OPTS=-Djenkins.install.runSetupWizard=true
     restart: unless-stopped
 
   employee_management:
+    container_name: employee_management
     build:
       context: /home/ec2-user/Employee-Jenkins
       dockerfile: Dockerfile
@@ -31,6 +32,7 @@ services:
         condition: service_healthy
 
   employee_db:
+    container_name: employee_db
     image: postgres:latest
     environment:
       POSTGRES_USER: admin
